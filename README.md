@@ -1,2 +1,2 @@
 # a5kin.github.io
-Source code for my static site.
+Source code for [a5kin.net](http://a5kin.net/).
