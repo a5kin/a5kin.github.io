@@ -2,7 +2,12 @@ from browser import document, window
 import math
 import random
 
-NUM_CIRCLES = 100
+from scripts.python.colorpalettes import PALETTES
+
+NUM_CIRCLES = 50
+SEED = "Andrey Zamaraev1"
+
+# random.seed(SEED)
 
 
 class ExcentricCircle:
@@ -48,15 +53,16 @@ class DevApp:
 
     def create_excentrics(self):
         """Create excentric circles for the stage."""
-        for _ in range(NUM_CIRCLES):
-            x_e = random.randint(-100, 100)
-            y_e = random.randint(-100, 100)
-            r_e = 42 * (1 + random.random())
-            r_c = 69 * (1 + random.random())
+        palette = random.choice(PALETTES)
+        for i in range(NUM_CIRCLES):
+            x_e = random.randint(-50, 50)
+            y_e = random.randint(-50, 50)
+            r_e = 23 * (1 + random.random())
+            r_c = (NUM_CIRCLES - i) / NUM_CIRCLES * 69 * (1 + random.random())
             fi = 2 * math.pi * random.random()
             dfi = (0.5 - random.random()) * math.pi / 50
-            color = 0x9966FF #* random.randint(0, 1)
-            opacity = 1 / 255
+            color = random.choice(palette)
+            opacity = 0.5
             circle = ExcentricCircle(x_e, y_e, r_e, r_c,
                                      fi, dfi, color, opacity)
             self.excentrics.append(circle)
